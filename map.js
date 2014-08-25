@@ -32,6 +32,7 @@ google.maps.event.addListener(map, "click", function(event) {
       infowindow.open(map, marker);
     });
 });
+
  // Create the search box and link it to the UI element.
   var input = /** @type {HTMLInputElement} */(
       document.getElementById('pac-input'));
