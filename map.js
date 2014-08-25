@@ -65,9 +65,9 @@ infowindow = new google.maps.InfoWindow({
       });
 
       markers.push(marker);
-      google.maps.event.addListener(marker, "click", function() {
       infowindow.open(map, marker);
-    });
+      
+
 
 
       bounds.extend(place.geometry.location);
