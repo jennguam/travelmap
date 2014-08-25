@@ -23,15 +23,7 @@ function initialize() {
 infowindow = new google.maps.InfoWindow({
  content: html
 });
-google.maps.event.addListener(map, "click", function(event) {
-    marker = new google.maps.Marker({
-      position: event.latLng,
-      map: map
-    });
-    google.maps.event.addListener(marker, "click", function() {
-      infowindow.open(map, marker);
-    });
-});
+
 
  // Create the search box and link it to the UI element.
   var input = /** @type {HTMLInputElement} */(
@@ -59,17 +51,30 @@ google.maps.event.addListener(map, "click", function(event) {
     var bounds = new google.maps.LatLngBounds();
     for (var i = 0, place; place = places[i]; i++) {
       var image = {
-        url: place.icon,
+        
         size: new google.maps.Size(71, 71),
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(17, 34),
         scaledSize: new google.maps.Size(25, 25)
       };
+       var marker = new google.maps.Marker({
+        map: map,
+        title: place.name,
+        draggable:true,
+        position: place.geometry.location
+      });
+
+      markers.push(marker);
+      google.maps.event.addListener(marker, "click", function() {
+      infowindow.open(map, marker);
+    });
+
 
       bounds.extend(place.geometry.location);
     }
 
     map.fitBounds(bounds);
+    map.setZoom(14);
   });
   google.maps.event.addListener(map, 'bounds_changed', function() {
     var bounds = map.getBounds();
