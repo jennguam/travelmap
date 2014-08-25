@@ -3,9 +3,9 @@ var infowindow;
 
 function initialize() {
   var markers = [];
-  var latlng = new google.maps.LatLng(37.4419, -122.1419);
+  var latlng = new google.maps.LatLng(39.8282, -98.5795);
   var options = {
-    zoom: 8,
+    zoom: 4,
     center: latlng,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   }
